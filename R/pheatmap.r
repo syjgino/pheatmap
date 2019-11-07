@@ -293,7 +293,7 @@ draw_annotations = function(converted_annotations, border_color, gaps, fontsize,
     
     if(horizontal){
         coord = expand.grid(x = x, y = y)
-        res = rectGrob(x = coord$x, y = coord$y, width = coord_x$size, height = unit(fontsize, "bigpts"), gp = gpar(fill = converted_annotations, col = border_color))
+        res = rectGrob(x = coord$x, y = coord$y, width = coord_x$size, height = unit(fontsize, "bigpts"), gp = gpar(fill = converted_annotations, col = "black"))
     }
     else{
         a = x
@@ -301,7 +301,7 @@ draw_annotations = function(converted_annotations, border_color, gaps, fontsize,
         y = unit(1, "npc") - a
         
         coord = expand.grid(y = y, x = x)
-        res = rectGrob(x = coord$x, y = coord$y, width = unit(fontsize, "bigpts"), height = coord_x$size, gp = gpar(fill = converted_annotations, col = border_color))
+        res = rectGrob(x = coord$x, y = coord$y, width = unit(fontsize, "bigpts"), height = coord_x$size, gp = gpar(fill = converted_annotations, col = "black"))
     }
     
     return(res)
@@ -342,7 +342,7 @@ draw_annotation_legend = function(annotation, annotation_colors, border_color, .
             n = length(annotation_colors[[i]])
             yy = y - (1:n - 1) * 2 * text_height
             
-            res[[paste(i, "r")]] = rectGrob(x = unit(0, "npc"), y = yy, hjust = 0, vjust = 1, height = 2 * text_height, width = 2 * text_height, gp = gpar(col = border_color, fill = annotation_colors[[i]]))
+            res[[paste(i, "r")]] = rectGrob(x = unit(0, "npc"), y = yy, hjust = 0, vjust = 1, height = 2 * text_height, width = 2 * text_height, gp = gpar(col = "black", fill = annotation_colors[[i]]))
             res[[paste(i, "t")]] = textGrob(names(annotation_colors[[i]]), x = text_height * 2.4, y = yy - text_height, hjust = 0, vjust = 0.5, gp = gpar(...))
             
             y = y - n * 2 * text_height
@@ -353,7 +353,7 @@ draw_annotation_legend = function(annotation, annotation_colors, border_color, .
             h = 8 * text_height * 0.25
             
             res[[paste(i, "r")]] = rectGrob(x = unit(0, "npc"), y = yy, hjust = 0, vjust = 1, height = h, width = 2 * text_height, gp = gpar(col = NA, fill = colorRampPalette(annotation_colors[[i]])(4)))
-            res[[paste(i, "r2")]] = rectGrob(x = unit(0, "npc"), y = y, hjust = 0, vjust = 1, height = 8 * text_height, width = 2 * text_height, gp = gpar(col = border_color, fill = NA))
+            res[[paste(i, "r2")]] = rectGrob(x = unit(0, "npc"), y = y, hjust = 0, vjust = 1, height = 8 * text_height, width = 2 * text_height, gp = gpar(col = "black", fill = NA))
             
             txt = rev(range(grid.pretty(range(annotation[[i]], na.rm = TRUE))))
             yy = y - c(1, 7) * text_height
