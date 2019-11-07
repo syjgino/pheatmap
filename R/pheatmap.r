@@ -463,7 +463,7 @@ heatmap_motor = function(matrix, border_color, cellwidth, cellheight, tree_col, 
     if(!is.na2(annotation_col)){
         # Draw tracks
         converted_annotation = convert_annotations(annotation_col, annotation_colors)
-        elem = draw_annotations(converted_annotation, border_color, gaps_col, fontsize, horizontal = T)
+        elem = draw_annotations(converted_annotation, "black", gaps_col, fontsize, horizontal = T) #border_color
         res = gtable_add_grob(res, elem, t = 3, l = 3, clip = "off", name = "col_annotation")
         
         # Draw names
@@ -477,7 +477,7 @@ heatmap_motor = function(matrix, border_color, cellwidth, cellheight, tree_col, 
     if(!is.na2(annotation_row)){
         # Draw tracks
         converted_annotation = convert_annotations(annotation_row, annotation_colors)
-        elem = draw_annotations(converted_annotation, border_color, gaps_row, fontsize, horizontal = F)
+        elem = draw_annotations(converted_annotation, "black", gaps_row, fontsize, horizontal = F) #border_color
         res = gtable_add_grob(res, elem, t = 4, l = 2, clip = "off", name = "row_annotation")
         
         # Draw names
@@ -492,7 +492,7 @@ heatmap_motor = function(matrix, border_color, cellwidth, cellheight, tree_col, 
     annotation = annotation[unlist(lapply(annotation, function(x) !is.na2(x)))]
     
     if(length(annotation) > 0 & annotation_legend){
-        elem = draw_annotation_legend(annotation, annotation_colors, border_color, fontsize = fontsize, ...)
+        elem = draw_annotation_legend(annotation, annotation_colors, "black", fontsize = fontsize, ...) #border_color
         
         t = ifelse(is.null(labels_row), 4, 3)
         res = gtable_add_grob(res, elem, t = t, l = 6, b = 5, clip = "off", name = "annotation_legend")
